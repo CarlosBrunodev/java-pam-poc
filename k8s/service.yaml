@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-pam-poc
+  namespace: java-pam-poc
+spec:
+  selector:
+    app: java-pam-poc
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

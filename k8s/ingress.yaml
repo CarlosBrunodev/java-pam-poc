@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: java-pam-poc
+  namespace: java-pam-poc
+spec:
+  ingressClassName: nginx   
+  rules:
+    - host: java-pam.dev.vli.digital
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: java-pam-poc
+                port:
+                  name: http

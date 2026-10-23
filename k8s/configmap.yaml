@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: java-pam-poc-config
+  namespace: java-pam-poc
+data:
+  DELINEA_BASE_URL: "https://vli.secretservercloud.com"
+  # Secrets lidos em GET /secrets (binding de lista do Spring via env var)
+  DELINEA_SECRETS_0_ID: "7880"
+  DELINEA_SECRETS_0_FIELD: "clientsecret"

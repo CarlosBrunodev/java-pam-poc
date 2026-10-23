@@ -1,0 +1,5 @@
+target/
+.idea/
+*.iml
+k8s/secret.yaml
+.m2/

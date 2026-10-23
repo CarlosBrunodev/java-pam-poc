@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: java-pam-poc
+
+server:
+  port: 8080
+  shutdown: graceful
+
+delinea:
+  base-url: ${DELINEA_BASE_URL:https://vli.secretservercloud.com}
+  # Credenciais SEMPRE via variável de ambiente (Kubernetes Secret)
+  username: ${DELINEA_USERNAME:}   # default vazio: força falha do @NotBlank se não definido
+  password: ${DELINEA_PASSWORD:}
+  connect-timeout: 5s
+  read-timeout: 10s
+  # Lista de campos lidos em GET /secrets (sobrescrevível via env DELINEA_SECRETS_0_ID etc.)
+  secrets:
+    - id: 7880
+      field: clientsecret
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true   # expõe /actuator/health/liveness e /actuator/health/readiness
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
